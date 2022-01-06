@@ -1,8 +1,5 @@
 # Terraform
-# Creating Variable
-- create a file called "variable.tf"
-- ![](pics/variable_terraform.png)
-- to call the variable use command var.VARIABLE_NAME
+
 ## install terraform
 - navigate to folder created (terraform)
 - brew tap hashicorp/tap
@@ -28,7 +25,12 @@
 ##### ssh into machine created
 -   ssh -i "~/.ssh/eng99.pem" ubuntu@ec2-34-255-161-170.eu-west-1.compute.amazonaws.com
 
-##### create a vpc usng terraform
+# Creating Variable
+- create a file called "variable.tf"
+- ![](pics/variable_terraform.png)
+- to call the variable use command var.VARIABLE_NAME
+- add file to .gitignore for security purposes(eg. type of machine being used  )
+##### create a vpc using terraform
 - https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest
 ![](pics/vpc_terraform.png)
 -       module "vpc" {
@@ -50,6 +52,8 @@
   }
 }
 ##### create security group using terraform
+- Inbound and outbound Rules have to be specified explictly
+- any changes can be made in the future
 ![](pics/security_group_terraform.png)
 
 
