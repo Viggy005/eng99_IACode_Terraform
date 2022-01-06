@@ -25,7 +25,7 @@
 ##### ssh into machine created
 -   ssh -i "~/.ssh/eng99.pem" ubuntu@ec2-34-255-161-170.eu-west-1.compute.amazonaws.com
 
-# Creating Variable
+### Creating Variable
 - create a file called "variable.tf"
 - ![](pics/variable_terraform.png)
 - to call the variable use command var.VARIABLE_NAME
