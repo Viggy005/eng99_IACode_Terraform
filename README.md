@@ -69,6 +69,7 @@
 # Day 4:
 
 ## Secure keys using Ansible Vault
+- ssh into contoller (vagrant ssh contoller)
 - we need the eng99.pem to ssh to aws ec2
 - install python 3
   -     sudo apt install python3-pip
@@ -88,7 +89,7 @@
 - cd .ssh
 - sudo nano eng99.pem (copy from our local host)
 - sudo chmod 400 eng99.pem
-- ssh into aws from contoller if sucesswe continue
+- ssh into aws from contoller if sucess then we continue
 - naviagte to /etc/ansible
 - sudo mkdir group_vars
 - cd group_vars
@@ -99,12 +100,17 @@
   - aws_secret_key: xxxxxxxxxx
   - press esc 
   - type out ":wq!" and press enter
+  ![](pics/ansible_vault_key/pass_yml.png)
 
 - ssh into app
   - cd etc
   - cd ssh  (not .ssh)
-  - sudo nano sshd_config
-    - enter 2 image to show 2 changes
+  - sudo nano sshd_config (make 2 changes)
+    - 2 image to show 2 changes
+      ![](pics/ansible_vault_key/app_sshd_config_file.png)
+      ![](pics/ansible_vault_key/app_sshd_config_file_2.png)
+
+
     - sudo systemctl restart ssh
     - sudo systemctl enable ssh
   - got to aws consol
@@ -113,7 +119,7 @@
 - ssh into contoller
   - nagigate to /etc/ansible
   - sudo nano hosts
-    - insert image of file
+    ![](pics/ansible_vault_key/hosts_file.png)
   - sudo ansible aws -m ping --ask-vault-pass
   - should ping and give sucess statment(ping: pong)
 
