@@ -57,7 +57,14 @@ resource "aws_security_group" "allow_tls" {
   name        = "eng99_vigneshraj_terraform"
   description = "Allow TLS inbound traffic"
   vpc_id      = var.vpc_id
-
+  #
+  ingress{
+    from_port = "80"
+    to_port = "80"
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  # allow access to port 3000 from any where
   ingress {
     description      = "access the app from anywhere world"
     from_port        = 3000
@@ -66,6 +73,7 @@ resource "aws_security_group" "allow_tls" {
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
+  # allow access to ssh from anywhere
   ingress {
     description      = "ssh from world"
     from_port        = 22
