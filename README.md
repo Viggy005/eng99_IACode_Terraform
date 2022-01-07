@@ -101,14 +101,14 @@
   - type out ":wq!" and press enter
 
 - ssh into app
-- cd etc
-- cd ssh  (not .ssh)
-- sudo nano sshd_config
-  - enter 2 image to show 2 changes
-  - sudo systemctl restart ssh
-  - sudo systemctl enable ssh
-- got to aws consol
-  - get public ip of instance to enter in hosts file
+  - cd etc
+  - cd ssh  (not .ssh)
+  - sudo nano sshd_config
+    - enter 2 image to show 2 changes
+    - sudo systemctl restart ssh
+    - sudo systemctl enable ssh
+  - got to aws consol
+    - get public ip of instance to enter in hosts file
 
 - ssh into contoller
   - nagigate to /etc/ansible
