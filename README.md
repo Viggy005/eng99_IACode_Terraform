@@ -68,7 +68,7 @@
 
 # Day 4:
 
-## Secure keys using Ansible Vault
+## Secure keys using Ansible Vault (password:1234)
 - ssh into contoller (vagrant ssh contoller)
 - we need the eng99.pem to ssh to aws ec2
 - install python 3
@@ -96,11 +96,14 @@
 - sudo mkdir all
 - cd all
 - sudo ansible-vault create pass.yml (this will take us inot vim)
+  - we will be promted to create a password(1234)
   - aws_access_key: xxxxxxxxxx
   - aws_secret_key: xxxxxxxxxx
   - press esc 
-  - type out ":wq!" and press enter
+  - type out ":wq!" and press enter to exit
   ![](pics/ansible_vault_key/pass_yml.png)
+  - sudo ansible-vault edit pass.yml
+  - shift +zz to quit whne in edit mode
 
 - ssh into app
   - cd etc
@@ -122,4 +125,11 @@
     ![](pics/ansible_vault_key/hosts_file.png)
   - sudo ansible aws -m ping --ask-vault-pass
   - should ping and give sucess statment(ping: pong)
+    - sudo ansible aws -m ping --ask-vault-pass
+# Run playbooks on AWS Resources from ansible contoller
+- ssh into contoller
+  - naviagte to /etc/ansible
+  - edit the playbook to "host: aws"
+  - run playbook:
+    - sudo ansible-playbook --ask-vault-pass install_nginx.yml
 
