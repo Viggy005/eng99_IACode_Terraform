@@ -133,3 +133,25 @@
   - run playbook:
     - sudo ansible-playbook --ask-vault-pass install_nginx.yml
 
+## steps:
+- terraform apply
+> setup db
+- edit hosts file with ip of database
+- Run playbook: setup_db.yml
+  - ansible-playbook setup_db.yml --ask-vault-pass
+  - check in db instance from controller
+    - ansible dbaws -a "sudo systemctl status mongodb"
+    - ansible dbaws -a "cat /etc/mongodb.conf" ----> bindip should be 0.0.0.0
+>setup web app
+- ssh into web app
+  - git clone REPO
+- edit host file with ip of web app
+- edit provision.sh file with ip of database
+- Run playbook: install_nginx.yml , setup_app.yml
+  - ansible-playbook install_nginx.yml --ask-value-pass
+  - ansible-playbook setup_app.yml --ask-value-pass
+- ssh into web app
+  - git clone (if not already done)
+  - npm install
+  - pm2 start app.js
+
